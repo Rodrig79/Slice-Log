@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "457820335662",
+    "project_id": "iansapp",
+    "storage_bucket": "iansapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457820335662:android:905ec678c76d22647179bf",
+        "android_client_info": {
+          "package_name": "com.IPOTHSeattle.sliceLog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457820335662-7dqckkhopnu9ic73bfdtat0kj7vh051n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2vBbWaDPKfBO2389vwtJpqhCcWGF5KcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457820335662-7dqckkhopnu9ic73bfdtat0kj7vh051n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
