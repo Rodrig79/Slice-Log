@@ -46,7 +46,7 @@ class Hamburger extends Component {
                                     borderWidth: 3,
                                     borderColor: '#000000'}}
                             onPress={() => {this.props.clearPies()}}>
-            <Text style={{color: '#AAAAAA', fontSize: 20}}>SUBMIT PIES</Text>
+            <Text style={{color: '#AAAAAA', fontSize: 20}} adjustsFontSizeToFit numberOfLines={1}>SUBMIT PIES</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%',
                                     flex: 1,
@@ -59,7 +59,7 @@ class Hamburger extends Component {
                                     borderTopWidth: 0}}
                             onPress={() => {this.props.openTempLog()
                                             this.props.updateHamburger()}}>
-            <Text style={{color: '#AAAAAA', fontSize: 20}}>TEMP LOG</Text>
+            <Text style={{color: '#AAAAAA', fontSize: 20}} adjustsFontSizeToFit numberOfLines={1}>TEMP LOG</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%',
                                     flex: 1,
@@ -69,7 +69,7 @@ class Hamburger extends Component {
                                     justifyContent: 'center'}}
                             onPress={() => {this.props.openMenu()
                                             this.props.updateHamburger()}}>
-            <Text style={{color: '#AAAAAA', fontSize: 20}}>MENU</Text>
+            <Text style={{color: '#AAAAAA', fontSize: 20}} adjustsFontSizeToFit numberOfLines={1}>MENU</Text>
           </TouchableOpacity>
         </Animated.View>
       );

@@ -16,7 +16,6 @@ class WindowPie extends Component {
   }
 
   updateState = (hours, mins) => {
-    console.log(hours)
     if (hours == 0 && mins == 0 || hours < 0) {
       if (this.state.style != styles.deadPie) {
         this.textColor = 'white';
