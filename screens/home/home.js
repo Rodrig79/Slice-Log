@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, StatusBar, ScrollView, ImageBackground, Alert} from 'react-native';
 import styles from './styles';
+import Hamburger from './components/hamburger';
 import TopBar from './components/topBar';
 import WindowPie from './components/windowPie';
 import RemovedPie from './components/removedPie';
@@ -28,6 +29,18 @@ class Home extends Component<{}> {
     var values = await initializePieArray()
     this.index = values.index
     this.setState({pieArray: values.pieArray})
+  }
+
+  updateHamburger = () => {
+      if (this.state.popup == 'start') {
+        this.setState({popup: 'open'})
+      }
+      else if (this.state.popup == 'closed') {
+        this.setState({popup: 'open'})
+      }
+      else {
+        this.setState({popup: 'closed'})
+      }
   }
 
   addPie = async(type) => {
@@ -147,11 +160,18 @@ class Home extends Component<{}> {
                           shown={this.removePieOptionsShown}
                           hideRemovePieOptions={this.hideRemovePieOptions}>
         </RemovePieOptions>
-        <TopBar pressAdd={() => {this.props.navigation.navigate('Add Pie', {
-                            onGoBack: (name) => this.addPie(name)})}}
-                clearPies={this.confirmClearPies}
-                openMenu={() => {this.props.navigation.navigate('Menu')}}
-                openTempLog={() => {this.props.navigation.navigate('Temp Log')}}>
+        <Hamburger status={this.state.popup}
+                   updateHamburger={this.updateHamburger}
+                   clearPies={this.confirmClearPies}
+                   openMenu={() => {this.props.navigation.navigate('Menu')}}
+                   openTempLog={() => {this.props.navigation.navigate('Temp Log')}}>
+        </Hamburger>
+        <TopBar pressHamburger={() => {this.updateHamburger()}}
+                pressAdd={() => {if (this.state.popup == 'open') {this.updateHamburger()}
+                          this.props.navigation.navigate('Add Pie', {
+                            onGoBack: (name) => this.addPie(name)
+                          })
+                }}>
         </TopBar>
         <View style={{flex: 6, width: '100%', zIndex: 1}}>
           <ScrollView>
