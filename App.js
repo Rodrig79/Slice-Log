@@ -7,7 +7,6 @@ import AddPiePopup from './screens/addPiePopup/addPiePopup'
 import TempLog from './screens/tempLog/tempLog'
 import Menu from './screens/menu/menu'
 
-//blingbling
 const Stack = createStackNavigator();
 
 const App = () => {
