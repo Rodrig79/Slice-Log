@@ -11,7 +11,7 @@ export default class TopBar extends Component {
       <View style={{width: '100%', flex: 1, backgroundColor: '#07121B', flexDirection: 'row', zIndex: 3}}>
         <View style={{width: '100%', height: '100%', backgroundColor: '#07121B', position: 'absolute', top: 0, zIndex: 4}}>
         </View>
-        <View style={{width: '100%', height: '100%', zIndex: 5}}>
+        <View style={{width: '100%', zIndex: 5}}>
           <Hamburger clearPies={this.props.clearPies}
                      openMenu={this.props.openMenu}
                      openTempLog={this.props.openTempLog}>

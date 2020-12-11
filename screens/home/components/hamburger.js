@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import {Animated, Dimensions, Text, View, TouchableOpacity, Image, Platform} from 'react-native';
+import {Animated, Dimensions, Text, View, TouchableOpacity, Image} from 'react-native';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 
 class Hamburger extends Component {
 
     constructor() {
       super()
-      this.state = {position: new Animated.Value(-Dimensions.get('window').height*0.05)}
-      this.end = Dimensions.get('window').height*0.17
+      this.state = {position: new Animated.Value(-Dimensions.get('window').height*0.125)}
+      this.end = Dimensions.get('window').height*0.1
     }
 
     startAnimation = () => {
@@ -16,13 +17,13 @@ class Hamburger extends Component {
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        if (this.end == Dimensions.get('window').height*0.17) {
-          this.end = -Dimensions.get('window').height*0.05
-          this.setState({position: new Animated.Value(Dimensions.get('window').height*0.17)})
+        if (this.end == Dimensions.get('window').height*0.1) {
+          this.end = -Dimensions.get('window').height*0.125
+          this.setState({position: new Animated.Value(Dimensions.get('window').height*0.1)})
         }
         else {
-          this.end = Dimensions.get('window').height*0.17
-          this.setState({position: new Animated.Value(-Dimensions.get('window').height*0.05)})
+          this.end = Dimensions.get('window').height*0.1
+          this.setState({position: new Animated.Value(-Dimensions.get('window').height*0.125)})
         }
       });
     }
@@ -35,22 +36,19 @@ class Hamburger extends Component {
       }
 
         return(
-          <View style={{width: '30%',
-                        height: '100%',
-                        justifyContent: 'center'}}>
-            <TouchableOpacity style={{width: '50%',
-                                      height: (Platform.OS === 'ios' ? '60%' : '80%'),
-                                      position: 'absolute',
-                                      bottom: 0,
-                                      zIndex: 5}}
-                              onPress={this.startAnimation}>
-              <Image source={require('../../../assets/hamburgerIcon.png')}
-                     style={{width:'70%', height: '70%', marginLeft: '20%', resizeMode: 'contain'}}>
-              </Image>
-            </TouchableOpacity>
-            <View style={{width: '100%', height: '100%', backgroundColor: '#07121B', zIndex: 4, position: 'absolute', top: 0}}/>
-            <Animated.View style={[{width: '100%',
-                          height: '150%',
+          <TouchableOpacity style={{width: '15%',
+                                    height: '50%',
+                                    backgroundColor: '#07121B',
+                                    marginTop: getStatusBarHeight(),
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    zIndex: 5}}
+                            onPress={() => {}}>
+            <Image source={require('../../../assets/hamburgerIcon.png')}
+                   style={{width:'70%', height: '70%', marginLeft: '40%', resizeMode: 'contain'}}>
+            </Image>
+            <Animated.View style={[{width: '30%',
+                          height: '225%',
                           position: 'absolute',
                           left: 0,
                           backgroundColor: '#07121B',
@@ -65,11 +63,11 @@ class Hamburger extends Component {
                                         justifyContent: 'center',
                                         borderWidth: 3,
                                         borderColor: '#000000'}}
-                                onPress={() => {this.props.clearPies()
+                                onPress={() => {this.props.openDailyPrep()
                                                 this.startAnimation()}}>
                 <Text style={{color: '#AAAAAA', fontSize: 20}}
                       adjustsFontSizeToFit
-                      numberOfLines={1}>SUBMIT PIES</Text>
+                      numberOfLines={1}>DAILY PREP</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{width: '100%',
                                         flex: 1,
@@ -80,11 +78,11 @@ class Hamburger extends Component {
                                         borderWidth: 3,
                                         borderColor: '#000000',
                                         borderTopWidth: 0}}
-                                onPress={() => {this.props.openMenu()
+                                onPress={() => {this.props.openInventory()
                                                 this.startAnimation()}}>
                 <Text style={{color: '#AAAAAA', fontSize: 20}}
                       adjustsFontSizeToFit
-                      numberOfLines={1}>MENU</Text>
+                      numberOfLines={1}>INVENTORY</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{width: '100%',
                                         flex: 1,
@@ -92,14 +90,14 @@ class Hamburger extends Component {
                                         backgroundColor: '#07121B',
                                         alignItems: 'center',
                                         justifyContent: 'center'}}
-                                onPress={() => {this.props.openTempLog()
+                                onPress={() => {this.props.openReports()
                                                 this.startAnimation()}}>
                 <Text style={{color: '#AAAAAA', fontSize: 20}}
                       adjustsFontSizeToFit
-                      numberOfLines={1}>TEMP LOG</Text>
+                      numberOfLines={1}>REPORTS</Text>
               </TouchableOpacity>
             </Animated.View>
-          </View>
+          </TouchableOpacity>
         );
     }
 }
