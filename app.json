@@ -25,7 +25,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "googleServicesFile": "./google-services.json",
-      "package": "com.IPOTHSeattle.sliceLog"
+      "package": "com.IPOTHSeattle.sliceLog",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/favicon.png"
