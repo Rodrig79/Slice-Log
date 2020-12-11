@@ -138,7 +138,7 @@ class Home extends Component<{}> {
 
     return (
       <View style={styles.container}>
-        <StatusBar barStyle={this.statusBarStyle}>
+        <StatusBar backgroundColor={'black'} barStyle={this.statusBarStyle}>
         </StatusBar>
         <ImageBackground source={require('../../assets/piesCropped.jpg')}
                          style={{height: '100%', width: '100%', position: 'absolute'}}>
