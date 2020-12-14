@@ -14,7 +14,7 @@ class NewPieButton extends Component {
                           onPress={() => {
                             this.props.updateCurrent(this.props.pieName);
                           }}>
-          <Text style={{fontSize: 20, textAlign: 'center'}}>{this.props.pieName}</Text>
+          <Text style={{fontSize: 20, textAlign: 'center'}} adjustsFontSizeToFit numberOfLines={2}>{this.props.pieName}</Text>
         </TouchableOpacity>
       </View>
     )
