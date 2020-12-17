@@ -33,7 +33,7 @@ class Home extends Component<{}> {
       var date = new Date()
       var hours = date.getHours()
       var mins = date.getMinutes()
-      if (hours == 4 && mins == 59) {
+      if (hours == 4 && mins == 59 && Object.keys(this.state.pieArray).length != 0) {
         this.clearPies('yes')
       }
     }, 60000)

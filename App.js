@@ -2,15 +2,17 @@ import * as React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack';
+import { useKeepAwake } from 'expo-keep-awake';
 import Home from './screens/home/home';
 import AddPiePopup from './screens/addPiePopup/addPiePopup'
 import TempLog from './screens/tempLog/tempLog'
 import Menu from './screens/menu/menu'
 
-//blingbling
+
 const Stack = createStackNavigator();
 
 const App = () => {
+  useKeepAwake()
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
