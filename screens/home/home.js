@@ -29,6 +29,18 @@ class Home extends Component<{}> {
     var values = await initializePieArray()
     this.index = values.index
     this.setState({pieArray: values.pieArray})
+    this.interval = setInterval(() => {
+      var date = new Date()
+      var hours = date.getHours()
+      var mins = date.getMinutes()
+      if (hours == 4 && mins == 59) {
+        this.clearPies('yes')
+      }
+    }, 60000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   updateHamburger = () => {
