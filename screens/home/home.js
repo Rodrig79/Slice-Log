@@ -23,6 +23,7 @@ class Home extends Component<{}> {
     this.statusBarStyle = 'light-content';
     this.removePieOptionsShown = 0
     this.removePieName = ''
+    this.notification = false
   }
 
   async componentDidMount() {
@@ -35,6 +36,9 @@ class Home extends Component<{}> {
       var mins = date.getMinutes()
       if (hours == 4 && mins == 59 && Object.keys(this.state.pieArray).length != 0) {
         this.clearPies('yes')
+      }
+      if ((hours == 11 && mins == 0) || (hours == 17 && mins == 0)) {
+        this.notification = true
       }
     }, 60000)
   }
