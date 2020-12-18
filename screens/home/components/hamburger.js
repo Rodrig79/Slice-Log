@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Animated, Dimensions, Text, View, TouchableOpacity} from 'react-native';
+import styles from '../styles'
 
 class Hamburger extends Component {
 
@@ -58,8 +59,18 @@ class Hamburger extends Component {
                                     borderColor: '#000000',
                                     borderTopWidth: 0}}
                             onPress={() => {this.props.openTempLog()
-                                            this.props.updateHamburger()}}>
+                                            this.props.updateHamburger()
+                                            this.props.hideNotification()}}>
             <Text style={{color: '#AAAAAA', fontSize: 20}} adjustsFontSizeToFit numberOfLines={1}>TEMP LOG</Text>
+            <TouchableOpacity style={this.props.notification == true ?
+                                      styles.tempLogActiveNotification : styles.tempLogInactiveNotification}
+                              onPress={() => {this.props.openTempLog()
+                                              this.props.updateHamburger()
+                                              this.props.hideNotification()}}>
+              <View style={styles.circle}>
+                <Text style={{fontSize: 20, color: 'white'}} adjustsFontSizeToFit numberOfLines={1}>1</Text>
+              </View>
+            </TouchableOpacity>
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%',
                                     flex: 1,

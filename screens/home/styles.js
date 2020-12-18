@@ -193,6 +193,40 @@ const styles = StyleSheet.create({
     color: '#E6E6E6'},
   removeInactiveText: {fontSize: 20,
     color: '#CCCCCC'},
+  activeNotification: {
+    position: 'absolute',
+    top: '10%',
+    right: '-10%',
+    width: '30%',
+    height: '30%',
+    zIndex: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  inactiveNotification: {
+    display: 'none'
+  },
+  tempLogActiveNotification: {
+    position: 'absolute',
+    top: '10%',
+    right: 0,
+    width: '15%',
+    height: '30%',
+    zIndex: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tempLogInactiveNotification: {
+    display: 'none'
+  },
+  circle: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 150/2,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
 
 export default styles;

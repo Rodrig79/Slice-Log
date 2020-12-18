@@ -24,6 +24,7 @@ class Home extends Component<{}> {
     this.removePieOptionsShown = 0
     this.removePieName = ''
     this.notification = false
+    this.notificationSound = false
   }
 
   async componentDidMount() {
@@ -39,12 +40,22 @@ class Home extends Component<{}> {
       }
       if ((hours == 11 && mins == 0) || (hours == 17 && mins == 0)) {
         this.notification = true
+        this.notificationSound = true
+        this.forceUpdate()
       }
     }, 60000)
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  stopSound = () => {
+    this.notificationSound = false
+  }
+
+  hideNotification = () => {
+    this.notification = false
   }
 
   updateHamburger = () => {
@@ -180,14 +191,19 @@ class Home extends Component<{}> {
                    updateHamburger={this.updateHamburger}
                    clearPies={this.confirmClearPies}
                    openMenu={() => {this.props.navigation.navigate('Menu')}}
-                   openTempLog={() => {this.props.navigation.navigate('Temp Log')}}>
+                   openTempLog={() => {this.props.navigation.navigate('Temp Log')}}
+                   notification={this.notification}
+                   hideNotification={this.hideNotification}>
         </Hamburger>
         <TopBar pressHamburger={() => {this.updateHamburger()}}
                 pressAdd={() => {if (this.state.popup == 'open') {this.updateHamburger()}
                           this.props.navigation.navigate('Add Pie', {
                             onGoBack: (name) => this.addPie(name)
                           })
-                }}>
+                }}
+                notification={this.notification}
+                notificationSound={this.notificationSound}
+                stopSound={this.stopSound}>
         </TopBar>
         <View style={{flex: 6, width: '100%', zIndex: 1}}>
           <ScrollView>
