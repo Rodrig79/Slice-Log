@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#EEEEEE',
     height: '100%',
+    padding: '2%'
   },
   pieStartTime: {
     borderWidth: 1,
@@ -76,7 +77,8 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 0.8,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: '2%'
   },
   pieTime: {
     borderWidth: 1,
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '2%'
   },
   deleteButton: {
     alignItems: 'center',
@@ -101,6 +104,7 @@ const styles = StyleSheet.create({
     flex: 1.8,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '2%'
   },
   addButton: {
     backgroundColor: 'black',

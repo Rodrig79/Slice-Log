@@ -17,17 +17,23 @@ class RemovedPie extends Component {
     return(
       <View style={styles.removedPie}>
         <View style={styles.pieName}>
-          <Text style={{fontSize: 20, opacity: 1}}>
+          <Text style={{fontSize: 20, opacity: 1}}
+                adjustsFontSizeToFit
+                numberOfLines={1}>
             {this.props.name}
           </Text>
         </View>
         <View style={styles.pieStartTime}>
-          <Text style={{fontSize: 15, textAlign: 'center'}}>
+          <Text style={{fontSize: 15, textAlign: 'center'}}
+                adjustsFontSizeToFit
+                numberOfLines={2}>
             {this.startTime}
           </Text>
         </View>
         <View style={styles.pieRemoveType}>
-          <Text style={{fontSize: 13}}>{this.props.removeType}</Text>
+          <Text style={{fontSize: 15}}
+                adjustsFontSizeToFit
+                numberOfLines={1}>{this.props.removeType}</Text>
         </View>
       </View>
     );

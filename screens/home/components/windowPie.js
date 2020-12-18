@@ -37,12 +37,16 @@ class WindowPie extends Component {
     return(
       <View style={this.state.style}>
         <View style={styles.pieName}>
-          <Text style={{fontSize: 20, opacity: 1, color: this.textColor}}>
+          <Text style={{fontSize: 20, opacity: 1, color: this.textColor}}
+                adjustsFontSizeToFit
+                numberOfLines={1}>
             {this.props.name}
           </Text>
         </View>
         <View style={styles.pieStartTime}>
-          <Text style={{fontSize: 15, textAlign: 'center', color: this.textColor}}>
+          <Text style={{fontSize: 15, textAlign: 'center', color: this.textColor}}
+                adjustsFontSizeToFit
+                numberOfLines={2}>
             {this.startTime}
           </Text>
         </View>

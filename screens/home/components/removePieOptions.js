@@ -31,37 +31,49 @@ class RemovePieOptions extends Component {
                         alignItems: 'flex-end'}}>
             <Text style={{fontSize: 18}}>REASON:</Text>
           </View>
-          <View style={{height: '40%',
+          <View style={{height: '50%',
                         width: '80%',
                         display: 'flex',}}>
             <Reason reason={'Expired'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
             <Reason reason={'Sold Out'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
             <Reason reason={'Looked Bad'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
             <Reason reason={'Contaminated'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
             <Reason reason={'Dropped'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
             <Reason reason={'Closed'}
                     currentReason={this.reason}
-                    onPress={(reason) => {this.reason = reason
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
+                              this.forceUpdate()}}>
+            </Reason>
+            <Reason reason={'Accident'}
+                    currentReason={this.reason}
+                    onPress={(reason, number=this.number) => {this.reason = reason
+                              this.number = number
                               this.forceUpdate()}}>
             </Reason>
           </View>

@@ -83,7 +83,7 @@ class Home extends Component<{}> {
                           };
     var pieArrayTemp = this.state.pieArray;
     pieArrayTemp[this.index.toString()] = newlyAddedValue;
-    this.index = this.index + 1;
+    this.index++;
     this.setState({ pieArray: pieArrayTemp});
     await SecureStore.setItemAsync('index', this.index.toString())
     await SecureStore.setItemAsync('pieList', JSON.stringify(pieArrayTemp))
@@ -91,15 +91,20 @@ class Home extends Component<{}> {
 
   removePie = async(value, reason, waste) => {
     var pieArrayTemp = this.state.pieArray;
-    var removeTemp = {}
-    removeTemp[1000+value] = pieArrayTemp[value]
-    removeTemp[1000+value].removed = true
-    removeTemp[1000+value].reason = reason
-    removeTemp[1000+value].waste = waste
-    delete pieArrayTemp[value];
-    pieArrayTemp = {
-      ...removeTemp,
-      ...pieArrayTemp
+    if (reason != 'Accident') {
+      var removeTemp = {}
+      removeTemp[1000+value] = pieArrayTemp[value]
+      removeTemp[1000+value].removed = true
+      removeTemp[1000+value].reason = reason
+      removeTemp[1000+value].waste = waste
+      delete pieArrayTemp[value];
+      pieArrayTemp = {
+        ...removeTemp,
+        ...pieArrayTemp
+      }
+    }
+    else {
+      delete pieArrayTemp[value]
     }
     this.setState({ pieArray: pieArrayTemp });
     await SecureStore.setItemAsync('pieList', JSON.stringify(pieArrayTemp))

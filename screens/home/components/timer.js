@@ -58,7 +58,9 @@ class Timer extends Component {
 
   render() {
     return(
-      <Text style={{fontSize: 20, color: this.color}}>
+      <Text style={{fontSize: 20, color: this.color}}
+            adjustsFontSizeToFit
+            numberOfLines={1}>
         {`${this.state.hours}:${this.state.mins}`}
       </Text>
     );

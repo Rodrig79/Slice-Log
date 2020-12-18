@@ -10,10 +10,26 @@ export default class Reason extends Component {
                         activeOpacity={1}
                         onPress={() => {
                           if (this.props.currentReason != this.props.reason) {
-                            this.props.onPress(this.props.reason)
+                            if (this.props.reason == 'Sold Out') {
+                              this.props.onPress(this.props.reason, 0)
+                            }
+                            else if (this.props.reason == 'Accident') {
+                              this.props.onPress(this.props.reason, 'N/A')
+                            }
+                            else if (this.props.currentReason == 'Sold Out' || 'Accident'){
+                              this.props.onPress(this.props.reason, 'none')
+                            }
+                            else {
+                              this.props.onPress(this.props.reason)
+                            }
                           }
                           else {
-                            this.props.onPress('none')
+                            if (this.props.reason == 'Sold Out') {
+                              this.props.onPress('none', 'none')
+                            }
+                            else {
+                              this.props.onPress('none')
+                            }
                           }}}>
         <Text>{this.props.reason.toUpperCase()}</Text>
       </TouchableOpacity>
