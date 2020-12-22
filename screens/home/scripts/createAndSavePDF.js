@@ -30,19 +30,18 @@ export async function createAndSavePDF(pieList) {
       to: pdfUri
     })
     await FileSystem.writeAsStringAsync(csvUri, csv)
-    if (Platform.OS === "ios") {
-      await Sharing.shareAsync(csvUri);
-    } else {
-      const permission = await MediaLibrary.requestPermissionsAsync();
-      if (permission.granted) {
-        const temp = await MediaLibrary.createAssetAsync(pdfUri)
-        await MediaLibrary.createAlbumAsync('Slice Logs', temp, true)
-        await MediaLibrary.deleteAssetsAsync([temp])
-        await Sharing.shareAsync(csvUri);
-      }
-    }
-    // uploadCsv(date,csvUri)
-    await FileSystem.deleteAsync(csvUri)
+    // if (Platform.OS === "ios") {
+    //   await Sharing.shareAsync(csvUri);
+    // } else {
+    //   const permission = await MediaLibrary.requestPermissionsAsync();
+    //   if (permission.granted) {
+    //     const temp = await MediaLibrary.createAssetAsync(pdfUri)
+    //     await MediaLibrary.createAlbumAsync('Slice Logs', temp, true)
+    //     await MediaLibrary.deleteAssetsAsync([temp])
+    //     await Sharing.shareAsync(csvUri);
+    //   }
+    // }
+    uploadCsv(dateFile, csvUri, csv)
 
   } catch (error) {
     console.error(error);
