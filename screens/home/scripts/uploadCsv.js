@@ -2,11 +2,9 @@ import * as Google from 'expo-google-app-auth';
 import * as FileSystem from 'expo-file-system';
 
 export async function uploadCsv(date, uri, csv) {
-  // var fileContent = 'sample text'
-  // var file = new Blob([fileContent], {type: 'text/csv'})
-  var name = "Slice-Log-" + date + ".csv"
+  var name = `"Slice-Log-` + `${date}"`
   var metadata = {
-      "name":"name",
+      "name":name,
       "mimeType":"application/vnd.google-apps.spreadsheet",
       "parents":[
         "1SdRy6zEnkp1a8Y2J3_1q1w4JbgczMlqu"
@@ -23,36 +21,30 @@ export async function uploadCsv(date, uri, csv) {
     console.log(type);
   }
 
-//simple upload success
-  // let size = (await FileSystem.getInfoAsync(uri)).size
-  // let headers = {
-  //   Authorization: 'Bearer ' + accessToken,
-  //   'Content-Type': 'text/csv',
-  //   'Content-Length': size.toString()
-  // }
-  // let options = {
-  //   headers: headers,
-  //   httpMethod: 'POST',
-  // }
-  // try {
-  //   let upload = await FileSystem.uploadAsync('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',
-  //                                 uri,
-  //                                 options)
-  //   console.log(upload)
-  // } catch(error) {
-  //   console.log(error)
-  // }
+  var boundary = "--boundary1234"
+  var body = ""
+  body += boundary + "\r\n" +
+          "Content-Type: application/json; charset=UTF-8" + "\r\n\r\n" +
+          `{
+              "name":` + name + `,
+              "mimeType":"application/vnd.google-apps.spreadsheet",
+              "parents":[
+                "1SdRy6zEnkp1a8Y2J3_1q1w4JbgczMlqu"
+              ]
+          }` + "\r\n" +
+          boundary + "\r\n" +
+          "Content-Type: text/csv" + "\r\n\r\n" +
+          csv + "\r\n" +
+          boundary + "--"
 
-// multipart upload attempt 2
-  var form = new FormData()
-  form.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json; charset=UTF-8'}))
-  form.append('media', new Blob([csv], {type: 'text/csv'}))
   fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
     method: 'POST',
     headers: {
-      Authorization: 'Bearer ' + accessToken
+      Authorization: 'Bearer ' + accessToken,
+      "Content-Type": "multipart/related; boundary=boundary1234",
+      "Content-Size": (await FileSystem.getInfoAsync(uri)).size.toString()
     },
-    body: form,
+    body: body,
   }).then((res) => {
     return res.json()
   }).then(function(val) {

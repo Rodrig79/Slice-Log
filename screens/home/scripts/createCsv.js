@@ -1,7 +1,7 @@
 const formatNumber = number => `0${number}`.slice(-2);
 
 export function createCsv(pieList) {
-  var csvText = "NAME,TIME,DISCARD,WASTE\n"
+  var csvText = "NAME,TIME MADE,DISCARD,WASTE\n"
   for (const property in pieList) {
     var hours = pieList[property].hours % 12;
     hours = hours ? hours : 12;
