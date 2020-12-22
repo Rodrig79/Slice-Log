@@ -37,16 +37,16 @@ class Home extends Component<{}> {
       var mins = date.getMinutes()
       var secs = date.getSeconds()
       if (hours == 4 && mins == 59 && Object.keys(this.state.pieArray).length != 0) {
-        this.clearPies('yes')
+        // this.clearPies('yes')
       }
       if (hours == 11 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('amSubmit') == 'false') {
-        this.notification = true
-        this.notificationSound = true
+        // this.notification = true
+        // this.notificationSound = true
         this.forceUpdate()
       }
       else if (hours == 17 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('pmSubmit') == 'false') {
-        this.notification = true
-        this.notificationSound = true
+        // this.notification = true
+        // this.notificationSound = true
         this.forceUpdate()
       }
     }, 1000)
