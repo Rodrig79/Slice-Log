@@ -16,8 +16,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "scheme": "seattleslicelog",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.IPOTHSeattle.sliceLog",
     },
     "android": {
       "googleServicesFile": "./google-services.json",
