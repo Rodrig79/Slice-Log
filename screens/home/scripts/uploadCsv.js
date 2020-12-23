@@ -1,6 +1,6 @@
-import * as Google from 'expo-google-app-auth'
-import * as AppAuth from 'expo-app-auth'
-// import * as GoogleSignIn from 'expo-google-sign-in';
+// import * as Google from 'expo-google-app-auth'
+// import * as AppAuth from 'expo-app-auth'
+import * as GoogleSignIn from 'expo-google-sign-in';
 import * as FileSystem from 'expo-file-system'
 
 export async function uploadCsv(date, uri, csv) {
@@ -34,8 +34,14 @@ export async function uploadCsv(date, uri, csv) {
     clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
   })
   const { type, user } = await GoogleSignIn.signInAsync();
-  const accessToken = user.auth.accessToken.toString()
-  return accessToken
+  const accessToken = user.auth.accessToken
+  if (type === 'success') {
+    alert(JSON.stringify(accessToken))
+  }
+  else {
+    alert(type)
+  }
+
   var boundary = "--boundary1234"
   var body = ""
   body += boundary + "\r\n" +

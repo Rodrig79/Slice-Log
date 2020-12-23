@@ -123,13 +123,12 @@ class Home extends Component<{}> {
           this.removePie(this.state.pieArray[property].index, 'Closed', '?')
         }
       }
-      var result = await createAndSavePDF(this.state.pieArray)
+      createAndSavePDF(this.state.pieArray)
       delete this.state.pieArray
       this.index = 0
       this.setState({pieArray: {}, popup: 'closed'});
       await SecureStore.setItemAsync('index', '0')
-      await SecureStore.setItemAsync('pieList', JSON.stringify({}))
-      this.addPie(result)
+      await SecureStore.setItemAsync('pieList', JSON.stringify({}))\
     }
     else {
       this.setState({popup: 'closed'})

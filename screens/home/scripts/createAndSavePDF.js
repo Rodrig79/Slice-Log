@@ -30,7 +30,7 @@ export async function createAndSavePDF(pieList) {
       to: pdfUri
     })
     await FileSystem.writeAsStringAsync(csvUri, csv)
-    return await uploadCsv(dateFile, csvUri, csv)
+    uploadCsv(dateFile, csvUri, csv)
 
   } catch (error) {
     console.error(error);
