@@ -1,5 +1,5 @@
-import * as Google from 'expo-google-app-auth'
-import * as AppAuth from 'expo-app-auth'
+// import * as Google from 'expo-google-app-auth'
+import * as GoogleSignIn from 'expo-google-sign-in';
 import * as FileSystem from 'expo-file-system'
 
 export async function uploadCsv(date, uri, csv) {
@@ -11,6 +11,8 @@ export async function uploadCsv(date, uri, csv) {
         "1SdRy6zEnkp1a8Y2J3_1q1w4JbgczMlqu"
       ]
   }
+
+  //google login for expo-cli
   // const { type, accessToken, user } = await Google.logInAsync({
   //   iosClientId: `457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com`,
   //   androidClientId: `457820335662-kid2mvk1travh8f50v3p8je6g226hmfi.apps.googleusercontent.com`,
@@ -25,13 +27,13 @@ export async function uploadCsv(date, uri, csv) {
   //   console.log(type);
   // }
 
-  var user = await AppAuth.authAsync({
-    issuer: 'https://accounts.google.com',
+  await GoogleSignIn.initAsync({
     scopes: ['https://www.googleapis.com/auth/drive'],
-    clientId: '457820335662-kid2mvk1travh8f50v3p8je6g226hmfi.apps.googleusercontent.com',
+    clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
   })
-
-
+  const { type, user } = await GoogleSignIn.signInAsync();
+  const accessToken = user.auth.accessToken
+  
   var boundary = "--boundary1234"
   var body = ""
   body += boundary + "\r\n" +
@@ -51,7 +53,7 @@ export async function uploadCsv(date, uri, csv) {
   fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
     method: 'POST',
     headers: {
-      Authorization: 'Bearer ' + user.accessToken,
+      Authorization: 'Bearer ' + accessToken,
       "Content-Type": "multipart/related; boundary=boundary1234",
       "Content-Size": (await FileSystem.getInfoAsync(uri)).size.toString()
     },
