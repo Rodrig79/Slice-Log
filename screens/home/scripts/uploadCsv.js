@@ -1,5 +1,6 @@
-// import * as Google from 'expo-google-app-auth'
-import * as GoogleSignIn from 'expo-google-sign-in';
+import * as Google from 'expo-google-app-auth'
+import * as AppAuth from 'expo-app-auth'
+// import * as GoogleSignIn from 'expo-google-sign-in';
 import * as FileSystem from 'expo-file-system'
 
 export async function uploadCsv(date, uri, csv) {
@@ -12,7 +13,7 @@ export async function uploadCsv(date, uri, csv) {
       ]
   }
 
-  //google login for expo-cli
+// google login for expo-cli
   // const { type, accessToken, user } = await Google.logInAsync({
   //   iosClientId: `457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com`,
   //   androidClientId: `457820335662-kid2mvk1travh8f50v3p8je6g226hmfi.apps.googleusercontent.com`,
@@ -27,13 +28,14 @@ export async function uploadCsv(date, uri, csv) {
   //   console.log(type);
   // }
 
+//google login for standalone android apk
   await GoogleSignIn.initAsync({
     scopes: ['https://www.googleapis.com/auth/drive'],
     clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
   })
   const { type, user } = await GoogleSignIn.signInAsync();
-  const accessToken = user.auth.accessToken
-  
+  const accessToken = user.auth.accessToken.toString()
+  return accessToken
   var boundary = "--boundary1234"
   var body = ""
   body += boundary + "\r\n" +
