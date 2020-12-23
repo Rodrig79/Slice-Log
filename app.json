@@ -22,7 +22,13 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "package": "com.IPOTHSeattle.sliceLog",
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyDDrsA5pCaCuK8F0LmjP0EkVf6tJLdEEv8",
+          "certificateHash": "F4F8677EC62C2BD58CD0FF7109597BC4F1F2D21E92B79BDCC319E3F9B407E33A"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

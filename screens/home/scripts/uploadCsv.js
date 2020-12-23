@@ -14,8 +14,10 @@ export async function uploadCsv(date, uri, csv) {
     iosClientId: `457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com`,
     androidClientId: `457820335662-kid2mvk1travh8f50v3p8je6g226hmfi.apps.googleusercontent.com`,
     iosStandaloneAppClientId: `457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com`,
-    androidStandaloneAppClientId: `457820335662-kid2mvk1travh8f50v3p8je6g226hmfi.apps.googleusercontent.com`,
-    scopes: ['https://www.googleapis.com/auth/drive']
+    androidStandaloneAppClientId: `457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com`,
+    webClientId: `457820335662-qtvgg1216he2keknrb142t1k5m58jtbg.apps.googleusercontent.com`,
+    scopes: ['https://www.googleapis.com/auth/drive'],
+    behavior: 'web'
   });
   if (type === 'success') {
     console.log(type);
