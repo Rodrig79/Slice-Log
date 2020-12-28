@@ -28,13 +28,15 @@ export async function uploadCsv(date, uri, csv) {
   //   console.log(type);
   // }
 
-//google login for standalone android apk
-alert('test1')
+// google login for standalone android apk
+alert('pre')
   await GoogleSignIn.initAsync({
     scopes: ['https://www.googleapis.com/auth/drive'],
     clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
   })
+  alert('between')
   const { type, user } = await GoogleSignIn.signInAsync();
+  alert('post')
   const accessToken = user.auth.accessToken
   if (type === 'success') {
     alert(JSON.stringify(accessToken))
