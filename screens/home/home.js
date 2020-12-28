@@ -128,7 +128,7 @@ class Home extends Component<{}> {
       this.index = 0
       this.setState({pieArray: {}, popup: 'closed'});
       await SecureStore.setItemAsync('index', '0')
-      await SecureStore.setItemAsync('pieList', JSON.stringify({}))\
+      await SecureStore.setItemAsync('pieList', JSON.stringify({}))
     }
     else {
       this.setState({popup: 'closed'})

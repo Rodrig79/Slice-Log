@@ -29,6 +29,7 @@ export async function uploadCsv(date, uri, csv) {
   // }
 
 //google login for standalone android apk
+alert('test')
   await GoogleSignIn.initAsync({
     scopes: ['https://www.googleapis.com/auth/drive'],
     clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
