@@ -1,5 +1,6 @@
 // import * as Google from 'expo-google-app-auth'
 // import * as AppAuth from 'expo-app-auth'
+import * as AuthSession from 'expo-auth-session'
 import * as GoogleSignIn from 'expo-google-sign-in';
 import * as FileSystem from 'expo-file-system'
 
@@ -28,22 +29,32 @@ export async function uploadCsv(date, uri, csv) {
   //   console.log(type);
   // }
 
-// google login for standalone android apk
-alert('pre')
-  await GoogleSignIn.initAsync({
-    scopes: ['https://www.googleapis.com/auth/drive'],
-    clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
+  let result = await AuthSession.startAsync({
+    authUrl:
+      `https://accounts.google.com/o/oauth2/v2/auth?` +
+      `&client_id=${`457820335662-qtvgg1216he2keknrb142t1k5m58jtbg.apps.googleusercontent.com`}` +
+      `&redirect_uri=${`https://auth.expo.io/@gwadsworth1224/sliceLog`}` +
+      `&response_type=token` +
+      `&scope=https://www.googleapis.com/auth/drive`,
   })
-  alert('between')
-  const { type, user } = await GoogleSignIn.signInAsync();
-  alert('post')
-  const accessToken = user.auth.accessToken
-  if (type === 'success') {
-    alert(JSON.stringify(accessToken))
-  }
-  else {
-    alert(type)
-  }
+  var accessToken = result.params.access_token
+
+// google login for standalone android apk
+  // await GoogleSignIn.initAsync({
+  //   scopes: ['https://www.googleapis.com/auth/drive'],
+  //   clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
+  // })
+  // alert(GoogleSignIn.ERRORS)
+  // var result = await GoogleSignIn.signInAsync();
+  // alert(GoogleSignIn.ERRORS)
+  // alert('post')
+  // const accessToken = result.user.auth.accessToken
+  // if (type === 'success') {
+  //   alert(JSON.stringify(accessToken))
+  // }
+  // else {
+  //   alert(type)
+  // }
 
   var boundary = "--boundary1234"
   var body = ""
