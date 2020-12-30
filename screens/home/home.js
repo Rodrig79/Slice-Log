@@ -40,12 +40,12 @@ class Home extends Component<{}> {
         // this.clearPies('yes')
       }
       if (hours == 11 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('amSubmit') == 'false') {
-        // this.notification = true
+        this.notification = true
         // this.notificationSound = true
         this.forceUpdate()
       }
       else if (hours == 17 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('pmSubmit') == 'false') {
-        // this.notification = true
+        this.notification = true
         // this.notificationSound = true
         this.forceUpdate()
       }

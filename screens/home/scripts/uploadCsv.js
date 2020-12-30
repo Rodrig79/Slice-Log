@@ -30,20 +30,16 @@ export async function uploadCsv(date, uri, csv) {
   // }
 
 // google login for standalone android apk
-  await GoogleSignIn.initAsync({
-    scopes: ['https://www.googleapis.com/auth/drive'],
-    clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
-  })
-  alert(GoogleSignIn.ERRORS)
-  var result = await GoogleSignIn.signInAsync();
-  alert(GoogleSignIn.ERRORS)
-  alert('post')
-  const accessToken = result.user.auth.accessToken
-  if (type === 'success') {
-    alert(JSON.stringify(accessToken))
-  }
-  else {
-    alert(type)
+  var accessToken = '';
+  await GoogleSignIn.askForPlayServicesAsync();
+  try {
+    await GoogleSignIn.askForPlayServicesAsync();
+    const { type, user } = await GoogleSignIn.signInAsync();
+    if (type === 'success') {
+      accessToken = user.auth.accessToken
+    }
+  } catch ({ message }) {
+    alert('login: Error:' + message);
   }
 
   var boundary = "--boundary1234"
