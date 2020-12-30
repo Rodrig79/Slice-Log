@@ -29,32 +29,22 @@ export async function uploadCsv(date, uri, csv) {
   //   console.log(type);
   // }
 
-  let result = await AuthSession.startAsync({
-    authUrl:
-      `https://accounts.google.com/o/oauth2/v2/auth?` +
-      `&client_id=${`457820335662-qtvgg1216he2keknrb142t1k5m58jtbg.apps.googleusercontent.com`}` +
-      `&redirect_uri=${`https://auth.expo.io/@gwadsworth1224/sliceLog`}` +
-      `&response_type=token` +
-      `&scope=https://www.googleapis.com/auth/drive`,
-  })
-  var accessToken = result.params.access_token
-
 // google login for standalone android apk
-  // await GoogleSignIn.initAsync({
-  //   scopes: ['https://www.googleapis.com/auth/drive'],
-  //   clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
-  // })
-  // alert(GoogleSignIn.ERRORS)
-  // var result = await GoogleSignIn.signInAsync();
-  // alert(GoogleSignIn.ERRORS)
-  // alert('post')
-  // const accessToken = result.user.auth.accessToken
-  // if (type === 'success') {
-  //   alert(JSON.stringify(accessToken))
-  // }
-  // else {
-  //   alert(type)
-  // }
+  await GoogleSignIn.initAsync({
+    scopes: ['https://www.googleapis.com/auth/drive'],
+    clientId: '457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com'
+  })
+  alert(GoogleSignIn.ERRORS)
+  var result = await GoogleSignIn.signInAsync();
+  alert(GoogleSignIn.ERRORS)
+  alert('post')
+  const accessToken = result.user.auth.accessToken
+  if (type === 'success') {
+    alert(JSON.stringify(accessToken))
+  }
+  else {
+    alert(type)
+  }
 
   var boundary = "--boundary1234"
   var body = ""
