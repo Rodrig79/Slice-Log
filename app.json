@@ -27,7 +27,7 @@
     },
     "android": {
       "googleServicesFile": "./google-services.json",
-      "package": "com.ipseattle.sliceLog",
+      "package": "com.ipothseattle.sliceLog",
       "softwareKeyboardLayoutMode": "pan",
       "config": {
         "googleSignIn": {
