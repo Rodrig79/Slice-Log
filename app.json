@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.IPOTHSeattle.sliceLog",
+      "bundleIdentifier": "com.ipseattle.sliceLog",
       "config": {
         "googleSignIn": {
           "reservedClientId": "com.googleusercontent.apps.457820335662-j2jt00fmto7dbe1c9h3p7i03k8n5anei"
@@ -27,11 +27,11 @@
     },
     "android": {
       "googleServicesFile": "./google-services.json",
-      "package": "com.IPOTHSeattle.sliceLog",
+      "package": "com.ipseattle.sliceLog",
       "softwareKeyboardLayoutMode": "pan",
       "config": {
         "googleSignIn": {
-          "apiKey": "AIzaSyDDrsA5pCaCuK8F0LmjP0EkVf6tJLdEEv8",
+          "apiKey": "AIzaSyAiBA0-6TZyxrqZyvDryo2iazzU2LsxNc8",
           "certificateHash": "5C:8A:8D:A6:11:02:DD:38:FD:8F:A3:12:74:71:E1:FD:10:9A:13:CB"
         }
       }

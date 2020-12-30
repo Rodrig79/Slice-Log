@@ -1,49 +1,42 @@
 {
   "project_info": {
-    "project_number": "457820335662",
-    "project_id": "iansapp",
-    "storage_bucket": "iansapp.appspot.com"
+    "project_number": "415910187985",
+    "project_id": "slice-log-cab2f",
+    "storage_bucket": "slice-log-cab2f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457820335662:android:905ec678c76d22647179bf",
+        "mobilesdk_app_id": "1:415910187985:android:b0cbd9a7bb475f4fc206f0",
         "android_client_info": {
-          "package_name": "com.IPOTHSeattle.sliceLog"
+          "package_name": "com.ipseattle.sliceLog"
         }
       },
       "oauth_client": [
         {
-          "client_id": "457820335662-iakle1qk9tk85icoa5vqadjmbj3s8180.apps.googleusercontent.com",
+          "client_id": "415910187985-npujf8vvq5q35oudskg41e6pkve9ppv0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.IPOTHSeattle.sliceLog",
+            "package_name": "com.ipseattle.sliceLog",
             "certificate_hash": "5c8a8da61102dd38fd8fa3127471e1fd109a13cb"
           }
         },
         {
-          "client_id": "457820335662-7dqckkhopnu9ic73bfdtat0kj7vh051n.apps.googleusercontent.com",
+          "client_id": "415910187985-vn5jdoifc4r4t7flekbcgf8i8jfor9ma.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2vBbWaDPKfBO2389vwtJpqhCcWGF5KcA"
+          "current_key": "AIzaSyAYzmzXUBaTR7nnMZAWUDYWE-NmAatowYA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457820335662-7dqckkhopnu9ic73bfdtat0kj7vh051n.apps.googleusercontent.com",
+              "client_id": "415910187985-vn5jdoifc4r4t7flekbcgf8i8jfor9ma.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "457820335662-9emkpcnjk952sqr7dq3io1923ivcbqp6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "host.exp.exponent"
-              }
             }
           ]
         }
