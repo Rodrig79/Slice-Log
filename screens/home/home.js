@@ -209,7 +209,7 @@ class Home extends Component<{}> {
         <TopBar pressHamburger={() => {this.updateHamburger()}}
                 pressAdd={() => {if (this.state.popup == 'open') {this.updateHamburger()}
                           this.props.navigation.navigate('Add Pie', {
-                            onGoBack: (name) => this.addPie(name)
+                            onGoBack: this.addPie
                           })
                 }}
                 notification={this.notification}

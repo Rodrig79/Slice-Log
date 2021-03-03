@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import styles from './styles';
+// import DateTimePicker from '@react-native-community/datetimepicker';
 import NewPieButton from './components/newPieButton';
 import AddOther from './components/addOther';
 import CloseButton from './components/closeButton';
@@ -20,6 +21,7 @@ class AddPiePopup extends Component {
     this.half1 = 'none';
     this.half2 = 'none';
     this.halfMessage = false;
+    this.time = new Date();
   }
 
   async componentDidMount() {
@@ -88,6 +90,12 @@ class AddPiePopup extends Component {
     }
   }
 
+  updateTime = (event, selectedTime) => {
+    const currentTime = selectedTime || this.time
+    this.time = currentTime
+    this.forceUpdate()
+  }
+
   render() {
     let addPieList = this.currentList.map((item, key) => {
         return (
@@ -131,6 +139,7 @@ class AddPiePopup extends Component {
           </ListButton>
         </View>
         <PieList addPieList={addPieList}/>
+
         <HalfMessage display={this.halfMessage == true}/>
         <CancelAdd confirmPie={(this.state.current != 'none' && this.state.current != 'Half/Half') ||
                                (this.half1 != 'none' && this.half2 != 'none') ?
