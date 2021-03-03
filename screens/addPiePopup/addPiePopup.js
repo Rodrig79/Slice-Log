@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import styles from './styles';
-// import DateTimePicker from '@react-native-community/datetimepicker';
 import NewPieButton from './components/newPieButton';
 import AddOther from './components/addOther';
 import CloseButton from './components/closeButton';

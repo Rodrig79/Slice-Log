@@ -10,9 +10,30 @@ import {initializePieArray} from './scripts/initializePieArray';
 import {initializeMenu} from './scripts/initializeMenu';
 import {createAndSavePDF} from './scripts/createAndSavePDF';
 import * as SecureStore from 'expo-secure-store';
+import * as firebase from 'firebase';
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyBDdMYNJHp-ASbTgiL9zpiW5R3MhOvTEqE',
+  authDomain: 'slice-log-11dab.firebaseapp.com',
+  databaseURL: 'https://slice-log-11dab-default-rtdb.firebaseio.com',
+  projectId: 'slice-log-11dab',
+  storageBucket: 'slice-log-11dab.appspot.com',
+  messagingSenderId: 'sender-id',
+  appId: 'app-id',
+  measurementId: 'G-measurement-id',
+};
+
+firebase.initializeApp(firebaseConfig);
 
 initializeMenu()
+
+function sortPiesForUpload(pieList) {
+  var newArray = []
+  for (const index in pieList) {
+    newArray.push(pieList[index]['name'])
+  }
+  return newArray
+}
 
 class Home extends Component<{}> {
 
@@ -37,7 +58,7 @@ class Home extends Component<{}> {
       var mins = date.getMinutes()
       var secs = date.getSeconds()
       if (hours == 4 && mins == 59 && Object.keys(this.state.pieArray).length != 0) {
-        // this.clearPies('yes')
+        this.clearPies('yes', true)
       }
       if (hours == 11 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('amSubmit') == 'false') {
         this.notification = true
@@ -49,6 +70,10 @@ class Home extends Component<{}> {
         // this.notificationSound = true
         this.forceUpdate()
       }
+
+      firebase.database().ref('data').set({
+        pieList: JSON.stringify(sortPiesForUpload(this.state.pieArray)),
+      });
     }, 1000)
   }
 
@@ -116,14 +141,16 @@ class Home extends Component<{}> {
     await SecureStore.setItemAsync('pieList', JSON.stringify(pieArrayTemp))
   }
 
-  clearPies = async(confirm) => {
+  clearPies = async(confirm, auto=false) => {
     if (confirm == 'yes') {
       for (const property in this.state.pieArray) {
         if (property < 1000) {
           this.removePie(this.state.pieArray[property].index, 'Closed', '?')
         }
       }
-      createAndSavePDF(this.state.pieArray)
+      if (!auto) {
+        createAndSavePDF(this.state.pieArray)
+      }
       delete this.state.pieArray
       this.index = 0
       this.setState({pieArray: {}, popup: 'closed'});

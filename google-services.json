@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "721503557281",
-    "project_id": "slice-log-5817b",
-    "storage_bucket": "slice-log-5817b.appspot.com"
+    "project_number": "745354319884",
+    "firebase_url": "https://slice-log-11dab-default-rtdb.firebaseio.com",
+    "project_id": "slice-log-11dab",
+    "storage_bucket": "slice-log-11dab.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721503557281:android:efdcec72159bf31c4442e0",
+        "mobilesdk_app_id": "1:745354319884:android:bd2dcea01a70ece9887629",
         "android_client_info": {
           "package_name": "com.seattleIPOTH.sliceLog"
         }
       },
       "oauth_client": [
         {
-          "client_id": "721503557281-10fl7m1fujtl228i4dl7lo1levngljeg.apps.googleusercontent.com",
+          "client_id": "745354319884-k911df90h74rpvjq0ka73ctvh978unm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seattleIPOTH.sliceLog",
+            "certificate_hash": "5c8a8da61102dd38fd8fa3127471e1fd109a13cb"
+          }
+        },
+        {
+          "client_id": "745354319884-aq58hk1otac5akah1dlb3gddv799mc3s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBwYdKeXUsfwaXMUezZy_dmGpzfCvY_jJA"
+          "current_key": "AIzaSyBDdMYNJHp-ASbTgiL9zpiW5R3MhOvTEqE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "721503557281-10fl7m1fujtl228i4dl7lo1levngljeg.apps.googleusercontent.com",
+              "client_id": "745354319884-aq58hk1otac5akah1dlb3gddv799mc3s.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
