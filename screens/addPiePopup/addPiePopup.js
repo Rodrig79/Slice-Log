@@ -17,6 +17,7 @@ class AddPiePopup extends Component {
     this.state = {current: 'none', meats: [], veggies: [], vegans: []};
     this.currentList = [];
     this.showAddOther = false;
+    this.other = 'Other';
     this.half1 = 'none';
     this.half2 = 'none';
     this.halfMessage = false;
@@ -30,22 +31,30 @@ class AddPiePopup extends Component {
     this.forceUpdate()
   }
 
-  updateCurrent = (next) => {
-    if (this.state.current == 'none') {
-      this.showAddOther = false;
+  updateOther = (name) => {
+    let otherIndex = this.currentList.indexOf(this.other)
+    this.other = name
+    if (otherIndex != -1) {
+      this.currentList[otherIndex] = this.other
     }
+  }
+
+  updateCurrent = (next) => {
+    this.showAddOther = false
     if (next == "Other") {
       this.showAddOther = true;
     }
 
-    if (this.state.current == next || next == 'Other') {
+    if (this.state.current == next) {
       this.half1 = 'none';
       this.half2 = 'none';
+      this.updateOther('Other')
       this.halfMessage = false;
       this.setState({current: 'none'});
     }
     else if (next == 'Half/Half') {
-      this.halfMessage = true,
+      this.updateOther('Other')
+      this.halfMessage = true;
       this.setState({current: 'Half/Half'});
     }
     else if (this.state.current == 'Half/Half') {
@@ -56,15 +65,19 @@ class AddPiePopup extends Component {
       else if (next == this.half2) {
         this.half2 = 'none'
       }
-      else if (this.half1 == 'none'){
+      else if (this.half1 == 'none' && next != 'Other'){
         this.half1 = next
       }
-      else {
+      else if (next != 'Other') {
         this.half2 = next
       }
       this.forceUpdate();
+      console.log(this.half1 + this.half2)
     }
     else {
+      if (this.state.current != 'Other') {
+        this.updateOther('Other')
+      }
       this.setState({current: next});
     }
   }
@@ -111,12 +124,10 @@ class AddPiePopup extends Component {
       <View style={styles.addPiePopup}>
         <AddOther show={this.showAddOther}
                   addPie={this.props.addPie}
+                  updateOther={this.updateOther}
                   updateCurrent={this.updateCurrent}
                   updateList={this.updateList}
-                  returnList={this.state.meats}
-                  hidePopup={(name) => {this.props.route.params.onGoBack(name)
-                                        this.props.navigation.goBack()
-                  }}>
+                  returnList={this.state.meats}>
         </AddOther>
         <CloseButton onPress={() => {
                               this.updateCurrent(this.state.current)

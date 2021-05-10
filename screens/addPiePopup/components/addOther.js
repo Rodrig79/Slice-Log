@@ -105,16 +105,16 @@ class AddOther extends Component {
             <View style={{height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
               <TouchableOpacity style={addPieStyle}
                                 onPress={() => {
-                                  if(this.pieName!= '' &&this.pieName != '\n' && this.pieName.trim()) {
+                                  if(this.pieName!= '' && this.pieName != '\n' && this.pieName.trim()) {
                                     Keyboard.dismiss();
-                                    this.props.hidePopup(this.pieName);
+                                    this.props.updateOther(this.pieName);
+                                    this.props.updateCurrent(this.pieName);
                                     this.pieName = '\n';
-                                    this.props.updateCurrent('none');
                                     this.props.updateList(this.props.returnList);
                                     this.refs.otherPieInput.clear();
                                   }
                                 }}>
-                <Text style={addPieText}>ADD PIE</Text>
+                <Text style={addPieText}>OK</Text>
               </TouchableOpacity>
             </View>
           </View>
