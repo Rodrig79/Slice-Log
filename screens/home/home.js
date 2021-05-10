@@ -18,9 +18,8 @@ const firebaseConfig = {
   databaseURL: 'https://slice-log-11dab-default-rtdb.firebaseio.com',
   projectId: 'slice-log-11dab',
   storageBucket: 'slice-log-11dab.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
+  messagingSenderId: '745354319884',
+  appId: '1:745354319884:android:bd2dcea01a70ece9887629',
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -30,7 +29,9 @@ initializeMenu()
 function sortPiesForUpload(pieList) {
   var newArray = []
   for (const index in pieList) {
-    newArray.push(pieList[index]['name'])
+    if (index < 1000) {
+      newArray.push(pieList[index]['name'])
+    }
   }
   return newArray
 }
@@ -62,12 +63,12 @@ class Home extends Component<{}> {
       }
       if (hours == 11 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('amSubmit') == 'false') {
         this.notification = true
-        // this.notificationSound = true
+        this.notificationSound = true
         this.forceUpdate()
       }
       else if (hours == 17 && mins == 0 && secs == 0 && await SecureStore.getItemAsync('pmSubmit') == 'false') {
         this.notification = true
-        // this.notificationSound = true
+        this.notificationSound = true
         this.forceUpdate()
       }
 

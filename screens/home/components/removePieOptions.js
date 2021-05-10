@@ -8,8 +8,8 @@ class RemovePieOptions extends Component {
   constructor() {
     super()
     this.opacity = new Animated.Value(0)
-    this.reason = 'none'
-    this.number = 'none'
+    this.reason = 'Sold Out'
+    this.number = '0'
   }
 
   render() {
@@ -155,8 +155,8 @@ class RemovePieOptions extends Component {
                                  backgroundColor: '#EEEEEE'}}
                               onPress={() => {
                                 this.props.hideRemovePieOptions(true, '', '')
-                                this.reason = 'none'
-                                this.number = 'none'
+                                this.reason = 'Sold Out'
+                                this.number = '0'
                               }}>
               <Text style={{fontSize: 20}}>CANCEL</Text>
             </TouchableOpacity>
@@ -166,8 +166,8 @@ class RemovePieOptions extends Component {
                               onPress={() => {
                                 if (this.reason != 'none' && this.number != 'none') {
                                   this.props.hideRemovePieOptions(false, this.reason, this.number)
-                                  this.reason = 'none'
-                                  this.number = 'none'
+                                  this.reason = 'Sold Out'
+                                  this.number = '0'
                                 }
                               }}>
               <Text style={this.reason != 'none' && this.number != 'none' ?
