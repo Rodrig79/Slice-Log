@@ -7,6 +7,7 @@ import Home from './screens/home/home';
 import AddPiePopup from './screens/addPiePopup/addPiePopup'
 import TempLog from './screens/tempLog/tempLog'
 import Menu from './screens/menu/menu'
+import Alert from './screens/alert/alert'
 
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Add Pie" component={AddPiePopup}/>
         <Stack.Screen name="Temp Log" component={TempLog}/>
         <Stack.Screen name="Menu" component={Menu}/>
+        <Stack.Screen name="Alert" component={Alert}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
